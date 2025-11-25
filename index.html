@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Solvb Software House</title>
+  <!-- Prevent search engines / crawlers from indexing this site -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <meta name="bingbot" content="noindex, nofollow" />
   <!-- load a professional system font (Inter) with a webfont fallback -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <!-- site icon / favicon -->
@@ -167,7 +171,7 @@
 
   <footer>
     <p>© 2025 Solvb — All rights reserved.</p>
-    <p><a class="contact-link" href="mailto:solvbsp@gmail.com" aria-label="Email Solvb">contact</a></p>
+    <p><a id="contactLink" class="contact-link" href="#" aria-label="Contact Solvb">contact</a></p>
   </footer>
 
   <script>
@@ -180,6 +184,26 @@
     }, { threshold: 0.2 });
 
     sections.forEach(sec => observer.observe(sec));
+  </script>
+  <script>
+    (function () {
+      const anchor = document.getElementById('contactLink');
+      if (!anchor) return;
+
+      const charCodes = [115,111,108,118,98,115,112,64,103,109,97,105,108,46,99,111,109];
+      const email = String.fromCharCode.apply(null, charCodes);
+
+      function openMail(e) {
+        e && e.preventDefault();
+        // open mail client
+        window.location.href = 'mailto:' + email;
+      }
+
+      anchor.addEventListener('click', openMail);
+      anchor.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter' || ev.key === ' ') openMail(ev);
+      });
+    })();
   </script>
 </body>
 </html>
