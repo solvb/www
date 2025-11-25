@@ -82,42 +82,76 @@
       color: white;
       margin-top: 60px;
     }
+      @keyframes fadebounce {
+      0% { opacity: 0.2; transform: translate(-50%, 0); }
+      50% { opacity: 1; transform: translate(-50%, 8px); }
+      100% { opacity: 0.2; transform: translate(-50%, 0); }
+    }
   </style>
 </head>
 <body>
   <header>
-    <svg class="bee-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-  <!-- Wings -->
-  <ellipse cx="60" cy="40" rx="28" ry="16" fill="#e3f2fd" stroke="#90caf9" stroke-width="3" />
-  <ellipse cx="90" cy="48" rx="24" ry="14" fill="#e3f2fd" stroke="#90caf9" stroke-width="3" />
-  <ellipse cx="30" cy="48" rx="24" ry="14" fill="#e3f2fd" stroke="#90caf9" stroke-width="3" />
+    <svg class="bee-icon" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cyberpunk Glow -->
+  <defs>
+    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
 
-  <!-- Body -->
-  <ellipse cx="60" cy="75" rx="32" ry="38" fill="#ffca28" stroke="#f57f17" stroke-width="4" />
+  <!-- Wings (holographic style) -->
+  <ellipse cx="70" cy="42" rx="34" ry="18" fill="rgba(150,220,255,0.25)" stroke="#80dfff" stroke-width="3" filter="url(#neonGlow)" />
+  <ellipse cx="105" cy="52" rx="26" ry="14" fill="rgba(150,220,255,0.2)" stroke="#80dfff" stroke-width="3" filter="url(#neonGlow)" />
+  <ellipse cx="35" cy="52" rx="26" ry="14" fill="rgba(150,220,255,0.2)" stroke="#80dfff" stroke-width="3" filter="url(#neonGlow)" />
 
-  <!-- Stripes -->
-  <rect x="32" y="55" width="56" height="12" fill="#333" rx="4" />
-  <rect x="32" y="70" width="56" height="12" fill="#333" rx="4" />
-  <rect x="32" y="85" width="56" height="12" fill="#333" rx="4" />
+  <!-- Body (cyber plating) -->
+  <ellipse cx="70" cy="88" rx="38" ry="44" fill="#111" stroke="#0ff" stroke-width="4" filter="url(#neonGlow)" />
+
+  <!-- Tech stripes -->
+  <rect x="42" y="66" width="56" height="10" fill="#0ff" rx="3" opacity="0.85" />
+  <rect x="42" y="82" width="56" height="10" fill="#0ff" rx="3" opacity="0.85" />
+  <rect x="42" y="98" width="56" height="10" fill="#0ff" rx="3" opacity="0.85" />
 
   <!-- Head -->
-  <circle cx="60" cy="32" r="18" fill="#333" />
+  <circle cx="70" cy="34" r="20" fill="#000" stroke="#0ff" stroke-width="4" filter="url(#neonGlow)" />
 
-  <!-- Eyes -->
-  <circle cx="52" cy="28" r="4" fill="white" />
-  <circle cx="68" cy="28" r="4" fill="white" />
+  <!-- Eyes (scan sensors) -->
+  <rect x="56" y="28" width="8" height="6" fill="#ff0099" filter="url(#neonGlow)" />
+  <rect x="76" y="28" width="8" height="6" fill="#ff0099" filter="url(#neonGlow)" />
 
-  <!-- Antennae -->
-  <line x1="52" y1="16" x2="46" y2="6" stroke="#333" stroke-width="4" stroke-linecap="round" />
-  <line x1="68" y1="16" x2="74" y2="6" stroke="#333" stroke-width="4" stroke-linecap="round" />
+  <!-- Antennae (neon wires) -->
+  <line x1="62" y1="18" x2="52" y2="4" stroke="#0ff" stroke-width="4" stroke-linecap="round" filter="url(#neonGlow)" />
+  <line x1="78" y1="18" x2="88" y2="4" stroke="#0ff" stroke-width="4" stroke-linecap="round" filter="url(#neonGlow)" />
 </svg>
     <h1>Solv<span>b</span></h1>
     <p>We solve problems. We buzz with ideas.</p>
-  </header>
+    <div class="scroll-indicator" style="position:absolute;bottom:30px;left:50%;transform:translateX(-50%);text-align:center;animation:fadebounce 2s infinite;">
+      <span style="display:block;color:#000;font-weight:bold;letter-spacing:1px;font-size:0.9rem;">Scroll</span>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:6px;">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+</header>
+
+  <section class="team">
+    <h2>Our Team & Culture</h2>
+    <p>At Solvb, collaboration is our superpower. Like a thriving hive, our team works in perfect harmony — designers, developers, and engineers contributing their unique strengths. We believe that great software emerges when diverse minds come together with a shared purpose: solving challenges with clarity, creativity, and precision.</p>
+    <div class="team-photos" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;margin-top:40px;">
+      <img src="./images/team1.png" loading="lazy" style="width:100%;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.15);" alt="Team working" />
+    </div>
+  </section>
 
   <section>
     <h2>About Us</h2>
     <p>Solvb is a modern software house inspired by the dual meaning of "solve" and "bee" — we solve challenges with the structured efficiency of a hive. We build powerful, scalable and elegant digital products.</p>
+    <div style="margin-top:30px;display:grid;grid-template-columns:1fr;gap:16px;">
+      <img src="./images/about.png" loading="lazy" style="width:100%;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.12);" alt="Office scene representing Solvb" />
+    </div>
   </section>
 
   <section>
@@ -141,6 +175,9 @@
   <section>
     <h2>Our Philosophy</h2>
     <p>Like a bee colony, we work in harmony — combining strategy, creativity, and engineering precision. Every project moves with purpose, efficiency and innovation.</p>
+    <div style="margin-top:30px;display:grid;grid-template-columns:1fr;gap:16px;">
+      <img src="./images/philosophy.png" loading="lazy" style="width:100%;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.12);" alt="Graphic representing our philosophy" />
+    </div>
   </section>
 
   <footer>
