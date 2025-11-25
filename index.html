@@ -6,6 +6,9 @@
   <title>Solvb Software House</title>
   <!-- load a professional system font (Inter) with a webfont fallback -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- site icon / favicon -->
+  <link rel="icon" href="./images/logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="./images/logo.png" />
   <style>
     body {
       margin: 0;
@@ -104,6 +107,13 @@
       color: white;
       margin-top: 60px;
     }
+    footer .contact-link {
+      color: #ffd43b;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+    footer .contact-link:hover { text-decoration: underline; }
       @keyframes fadebounce {
       0% { opacity: 0.2; transform: translate(-50%, 0); }
       50% { opacity: 1; transform: translate(-50%, 8px); }
@@ -157,6 +167,7 @@
 
   <footer>
     <p>© 2025 Solvb — All rights reserved.</p>
+    <p><a class="contact-link" href="mailto:solvbsp@gmail.com" aria-label="Email Solvb">contact</a></p>
   </footer>
 
   <script>
