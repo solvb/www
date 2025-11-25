@@ -4,10 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Solvb Software House</title>
+  <!-- load a professional system font (Inter) with a webfont fallback -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      /* professional-looking font for the whole page; Inter is readable and modern */
+      font-family: 'Inter', Arial, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
       background: #f9f8f6;
       color: #333;
       overflow-x: hidden;
@@ -19,8 +22,14 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ffe066, #ffd43b);
+      /* use a full-bleed background image with a gradient fallback stacked underneath */
+      background-image: url('./images/background.png'), linear-gradient(135deg, #ffe066, #ffd43b);
+      background-size: cover, cover;
+      background-position: center, center;
+      background-repeat: no-repeat, no-repeat;
       position: relative;
+      /* create a local blending context so the logo's blend-mode doesn't affect other parts */
+      isolation: isolate;
       text-align: center;
     }
 
@@ -32,9 +41,22 @@
       color: #f08c00;
     }
 
+    /* larger, more prominent tagline in the header */
+    header > p.tagline {
+      /* twice the default size (approx) */
+      font-size: 2rem;
+      line-height: 1.2;
+      font-weight: 500;
+      margin-top: 10px;
+      color: #0f1720; /* slightly darker for contrast */
+      max-width: 820px;
+      text-align: center;
+    }
+
     .bee-icon {
       width: 120px;
       animation: float 4s ease-in-out infinite;
+      background: transparent;
     }
 
     @keyframes float {
@@ -91,45 +113,9 @@
 </head>
 <body>
   <header>
-    <svg class="bee-icon" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
-  <!-- Cyberpunk Glow -->
-  <defs>
-    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="4" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
-  </defs>
-
-  <!-- Wings (holographic style) -->
-  <ellipse cx="70" cy="42" rx="34" ry="18" fill="rgba(150,220,255,0.25)" stroke="#80dfff" stroke-width="3" filter="url(#neonGlow)" />
-  <ellipse cx="105" cy="52" rx="26" ry="14" fill="rgba(150,220,255,0.2)" stroke="#80dfff" stroke-width="3" filter="url(#neonGlow)" />
-  <ellipse cx="35" cy="52" rx="26" ry="14" fill="rgba(150,220,255,0.2)" stroke="#80dfff" stroke-width="3" filter="url(#neonGlow)" />
-
-  <!-- Body (cyber plating) -->
-  <ellipse cx="70" cy="88" rx="38" ry="44" fill="#111" stroke="#0ff" stroke-width="4" filter="url(#neonGlow)" />
-
-  <!-- Tech stripes -->
-  <rect x="42" y="66" width="56" height="10" fill="#0ff" rx="3" opacity="0.85" />
-  <rect x="42" y="82" width="56" height="10" fill="#0ff" rx="3" opacity="0.85" />
-  <rect x="42" y="98" width="56" height="10" fill="#0ff" rx="3" opacity="0.85" />
-
-  <!-- Head -->
-  <circle cx="70" cy="34" r="20" fill="#000" stroke="#0ff" stroke-width="4" filter="url(#neonGlow)" />
-
-  <!-- Eyes (scan sensors) -->
-  <rect x="56" y="28" width="8" height="6" fill="#ff0099" filter="url(#neonGlow)" />
-  <rect x="76" y="28" width="8" height="6" fill="#ff0099" filter="url(#neonGlow)" />
-
-  <!-- Antennae (neon wires) -->
-  <line x1="62" y1="18" x2="52" y2="4" stroke="#0ff" stroke-width="4" stroke-linecap="round" filter="url(#neonGlow)" />
-  <line x1="78" y1="18" x2="88" y2="4" stroke="#0ff" stroke-width="4" stroke-linecap="round" filter="url(#neonGlow)" />
-</svg>
+    <img class="bee-icon" src="./images/logo.png" alt="Solvb logo" loading="lazy" />
     <h1>Solv<span>b</span></h1>
-    <p>We solve problems. We buzz with ideas.</p>
+    <p class="tagline">We solve problems. We buzz with ideas.</p>
     <div class="scroll-indicator" style="position:absolute;bottom:30px;left:50%;transform:translateX(-50%);text-align:center;animation:fadebounce 2s infinite;">
       <span style="display:block;color:#000;font-weight:bold;letter-spacing:1px;font-size:0.9rem;">Scroll</span>
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:6px;">
